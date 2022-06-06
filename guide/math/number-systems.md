@@ -18,8 +18,10 @@ If you thought you'd get through this without doing any math, well, I'm sorry. W
 
 ### Base 10
 _What we use every day!_
+$$178 =  1 \times 10^{2} + 7 \times 10^{1} + 8 \times 10^{0}$$
 
 TODO: Fill out base 10
+How the values of quantities 
 
 ### Hexadecimal
   _Also known as base 16!_
