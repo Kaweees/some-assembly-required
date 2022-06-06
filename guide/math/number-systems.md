@@ -41,9 +41,11 @@ Hex is base 16, which means is the available digits are 0-9 and A-F (for 10-15).
 
 7D would translate to:
 
-- D = 13
-- (7 * 16^1) + (13 * 16^0)
-- 112 + 13 = 125
+$$D = 13$$
+
+$$7D = (7 \times 16^{1}) + (13 \times 16^{0})$$
+
+$$7D = 112 + 13 = 125$$
 
 ### Binary
 _Also known as base 2!_
@@ -66,8 +68,9 @@ Each digit is the value of the digit (0 or 1) times 2 to the power of the positi
 
 11011 would translate to:
 
-- (1 * 2^4) + (1 * 2^3) + (0 * 2^2) + (1 * 2^1) + (1 * 2^))
-- 16 + 8 + 0 + 2 + 1 = 27
+$$11011 = (1 \times 2^{4}) + (1 \times 2^{3}) + (1 \times 2^{2}) + (0 \times 2^{2}) + (1 \times 2^{1}) + (1 \times 2^{0})$$
+
+$$11011 = 16 + 8 + 0 + 2 + 1 = 27$$
 
 Confused? Check out [this site](https://www.mathsisfun.com/binary-number-system.html) for more information and an animated explanation.
 
