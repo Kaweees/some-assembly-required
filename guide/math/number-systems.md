@@ -34,6 +34,7 @@ When you see 125 as a number, you can think of that as:
 
 
 $$125 = (1 \times 10^{2}) + (2 \times 10^{1}) + (5 \times 10^{0})$$
+
 $$125 = 100 + 20 + 5$$
 
 Hex is base 16, which means is the available digits are 0-9 and A-F (for 10-15).  When we count in base 16 numbers, we count from 0 up to F(15) and then start over again but add one to the left: 0, 1, 2, ..., E, F, 10, 11, ..., 1E, 1F, 20, 21, etc. Each digit is the value of the digit (0-15 where 10-15 are represented by A-F) times 16 to the power of the position of the digit (starting with 0 from the right).
