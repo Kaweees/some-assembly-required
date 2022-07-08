@@ -1,6 +1,12 @@
 # Resources
 
-## Computer science fundamentals
+## CPU Architecture
+
+### Intel's CPU architecture videos
+- Part 1: https://www.youtube.com/watch?v=vgPFzblBh7w
+- Part 2: https://www.youtube.com/watch?v=o_WXTRS2qTY
+
+## Computer Science
 
 - https://store.steampowered.com/app/1444480/Turing_Complete/
 - https://www.youtube.com/playlist?app=desktop&list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo
@@ -43,9 +49,7 @@
 ### Syscalls
   - https://filippo.io/making-system-calls-from-assembly-in-mac-os-x/
   - http://dustin.schultz.io/mac-os-x-64-bit-assembly-system-calls.html
-
-### Debugging
-  - https://stackoverflow.com/questions/52830484/nasm-cant-link-object-file-with-ld-on-macos-mojave
+  - https://filippo.io/linux-syscall-table/
 
 ## Debugger
 
@@ -99,4 +103,13 @@
       </a>
     </b>
   </em>
+</p>
+
+---
+
+<p align="center">
+  <a href="https://hackclub.com/">
+    <img width="35" src="https://cloud-l0g1cgz4b-hack-club-bot.vercel.app/0h.png"><br/>
+    Made with love by Hack Club
+  </a>
 </p>

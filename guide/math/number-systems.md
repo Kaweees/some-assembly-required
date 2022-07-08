@@ -1,45 +1,83 @@
 # The Math Section
 
-If you thought you'd get through this without doing any math, well, I'm sorry. We have to do a little bit so that we can understand what the computer is doing, because like I said, it's all just basic math underneath. I will promise you that it won't be too hard!
+So far with learning about CPUs and assembly, we haven't actually needed to dive into any big math concepts! However, for deeper understanding of how our computers are working, there are some fundamentals worth talking about.
 
-## Number Systems
+Like, how numbers are made up. There, I said it.
+
+But really, the numbers you and I think about, (1, 2, 3, etc.) are symbols that we have created in order to represent the things we see around us. We most commonly represent these numbers in something called **base 10**, meaning we have 10 digits to represent our numbers.
 
 <p align="center">
   <br />
-  <img width="750" src="https://cloud-lhlv3an57-hack-club-bot.vercel.app/0math.png">
+  <img height="250" src="https://cloud-qs4ujxdmd-hack-club-bot.vercel.app/0hands.png">
   <br />
   <span>
     <em>
-      just a placeholder image to break up the content!
+      Why 10? Well, it's because we have 10 fingers!
     </em>
   </span>
 </p>
 <br />
 
-### Base 10
-_What we use every day!_
+## Decimal (Base 10)
 
-TODO: Fill out base 10
-How the values of quantities 
+Base 10, also known as decimal, is something called a number system. The most common way we refer to numbers is in base 10, and it means that we have 10 digits we can use to represent any number.
 
-### Hexadecimal
-  _Also known as base 16!_
+Those digits are 0 - 9. So, what happens when we run out of digits? We shift over to the left by 1 place, and we start all over again. For example:
+```js
+  0
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10 // Note that we shifted over by 1 place
+ 11
+ 12
+...
+ 98
+ 99
+100 // Note that we shifted over by 1 place
+101
+102
+...
+108
+109
+110 // Since we ran out of digits in the "ones" place, we increment the "tens" place and start the "ones" place over
+111
+```
 
-TODO: Make this friendlier
+This looks obvious to you, I know. We all do this without thinking about it. But how it works is important, because as I'm sure you've guessed, there's more than one number system. You've actually been hearing about one a lot throughout this guide. Remember all of our **1**s and **0**s we've been talking about?
 
-All numbers in assembly language are represented by hexadecimal.
-When we think of numbers in the human world, we think of them in base 10. Base 10 means that each digit of a number can be represented with the digits 0-9. Each digit over we move (for example 1 vs 10 vs 100) is 10 times the value to the right of it (as seen in the graph above). And when we count in base 10 numbers, we count from 0 up to 9 and then start over again but add one to the left: 0, 1, ..., 10, 11, ..., 20, 21, etc.
+## Binary (Base 2)
 
-When you see 125 as a number, you can think of that as:
+It's helpful to be able to decode binary when we're talking at this low of a level. You and I know how to communicate in base 10, but binary is base 2, which is what the computer understands.
 
 
 $$125 = (1 \times 10^{2}) + (2 \times 10^{1}) + (5 \times 10^{0})$$
 
 $$125 = 100 + 20 + 5$$
+As we already know with binary, there are only two digits represented: **0** and **1**. Now, what's nice about number bases is they all work the same way. Once we run out of digits, we shift over by one place. So let's try it out:
 
-Hex is base 16, which means is the available digits are 0-9 and A-F (for 10-15).  When we count in base 16 numbers, we count from 0 up to F(15) and then start over again but add one to the left: 0, 1, 2, ..., E, F, 10, 11, ..., 1E, 1F, 20, 21, etc. Each digit is the value of the digit (0-15 where 10-15 are represented by A-F) times 16 to the power of the position of the digit (starting with 0 from the right).
+```js
+  0 // 0
+  1 // 1
+ 10 // 2 - Note that we shifted over by 1 place
+ 11 // 3
+100 // 4 - Note that we shifted over by 1 place
+101 // 5
+110 // 6 - Since we ran out of digits in the "ones" place, we increment the "twos" place and start the "ones" place over
+111 // 7
+```
 
-7D would translate to:
+<details>
+<summary><i>Given this pattern we're seeing, what will 8 be in binary?</i></summary>
+<br />
+<i>Since we've run out of digits to use, we have to shift 1 place over. 8 in binary is `1000`.</i>
+</details>
 
 $$D = 13$$
 
@@ -47,38 +85,186 @@ $$7D = (7 \times 16^{1}) + (13 \times 16^{0})$$
 
 $$7D = 112 + 13 = 125$$
 
-### Binary
-_Also known as base 2!_
+So if we follow this simple pattern, we can count up our numbers without too much hassle.
 
-TODO: Make this friendlier
+But, let's say we need to read a random number in binary, like `10011`. We wouldn't want to have to count up to that number to figure out what it is. Let's talk about some rules that can help us figure out what that number adds up to in base 10.
 
-<p align="center">
-  <br>
-  <img width="460" height="300" src="https://images.easytechjunkie.com/green-lit-numbers.jpg">
-  <br>
-</p>
+Going from right to left, each digit is the value of the digit (`0` or `1`) times **2** to the power of the position of the digit. This is because, if you recall, we're working in **base 2**. That means 2 is the base of our equation!
 
-When people hear that I program for a living, they think that I stare at 0s and 1s all day. Luckily I do not, because that would give me a migraine.
+So let's try this out. `10011` would translate to, from right to left:
 
-These digits are referred to as binary, which is a number system that has 2 as its base. Binary is important to talk about because the computer does everything in base 2, like how you and I do everything in base 10.
+- $1 * 2^0 = 1$
+- $1 * 2^1 = 2$
+- $0 * 2^2 = 0$
+- $0 * 2^3 = 0$
+- $1 * 2^4 = 16$
+- $1 + 2 + 0 + 0 + 16 = 19$
 
-With binary, there are only two digits represented: 0 and 1. When we count in base 2 numbers, we count from 0 up to 1 and then start over again but add one to the left: 0, 1, 10, 11, 100, 101, 110, etc.With binary, since it's only 0 and 1, when adding to digit 0, you change it to digit 1 and when adding digit 1, you change the digit to 0 and add 1 to the left of that digit.
+So `10011` equals **19** in base 10!
 
-Each digit is the value of the digit (0 or 1) times 2 to the power of the position of the digit (starting with 0 from the right).
+Now, for those extra credit readers, you could try calculating `1011001` into base 10 on your own if you're so inclined.
 
-11011 would translate to:
+<details>
+<summary><i>What is <code>1011001</code> in base 10?</i></summary>
+<br />
+<i>
+As a reminder, we're calculating from right to left.
+
+- $1 * 2^0 = 1$
+- $0 * 2^1 = 0$
+- $0 * 2^2 = 0$
+- $1 * 2^3 = 8$
+- $1 * 2^4 = 16$
+- $0 * 2^5 = 0$
+- $1 * 2^6 = 64$
+- $1 + 0 + 0 + 8 + 16 + 0 + 64 = 89$
 
 $$11011 = (1 \times 2^{4}) + (1 \times 2^{3}) + (1 \times 2^{2}) + (0 \times 2^{2}) + (1 \times 2^{1}) + (1 \times 2^{0})$$
 
 $$11011 = 16 + 8 + 0 + 2 + 1 = 27$$
+So `1011001` is 89 in base 10.
+</i>
+</details>
 
-Confused? Check out [this site](https://www.mathsisfun.com/binary-number-system.html) for more information and an animated explanation.
+Congratulations, you smartie you! You officially know how to read binary!
+
+## Hexadecimal (Base 16)
+
+Here's a fun fact for you: any number can technically be a base. We'll only be talking about one more base, which is base 16. Base 16 is also known as hexadecimal and commonly shortened to hex.
+
+We're going to talk about hex because binary is often shortened to hex. This is because, when we're talking about the size of registers, we can easily substitute binary with hex to make everything shorter and easier to read. For example, on a 64-bit machine, a register might look like:
+
+```
+10000001 00010011 00000000 11110000 10101000 11000111 01111101 00000001
+```
+
+The same numbers in hex would end up looking like:
+
+```
+81 13 00 FO A8 C7 7D 01
+```
+
+_Whoa whoa whoa. Now wait a minute. Why are there letters?_
+
+Well, we have to remember - our base is 16. That means we have 16 digits to represent our numbers. Those digits are:
+
+```js
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+A // 10 - In base 10, we'd have to shift over because we run out of digits. In base 16, we have more digits to use!
+B // 11
+C // 12
+D // 13
+E // 14
+F // 15
+```
+
+So those letters map to numbers!
+
+So what would happen if we went past 15? We do the same thing we did before - shift over by 1 and start over. Let's try it out.
+
+```js
+...
+ 8
+ 9
+ A // 10
+ B // 11
+ C // 12
+ D // 13
+ E // 14
+ F // 15
+10 // 16 - Note that we shifted over by 1 place
+11 // 17
+12 // 18
+13 // 19
+14 // 20
+15 // 21
+16 // 22
+17 // 23
+18 // 24
+19 // 25
+1A // 26
+1B // 27
+1C // 28
+1D // 29
+1E // 30
+1F // 31
+20 // 32
+...
+```
+
+It's really weird, I know. Your brain _wants_ to parse it as decimal, or base 10. But since the math behind the base is completely different, numbers that look like something in base 10 mean completely different things in base 16!
+
+---
+
+Let's calculate our binary to hex example from above into decimal. For a reminder, our binary was:
+
+```
+10000001 00010011 00000000 11110000 10101000 11000111 01111101 00000001
+```
+
+And our hex digits are:
+
+```
+81 13 00 FO A8 C7 7D 01
+```
+
+This part works the same as the binary part, but with 16 as our base instead of 2. So let's take one of our bytes from above, `7D`, as an example. We're going to go from right to left, just like in our binary example. You can also think of it as least significant digit to most significant digit, just like in decimal.
+
+Our number is **7D**.
+
+- $D$ maps to $13$
+  - $13 * 16^0 = 13$
+- $7$ maps to $7$
+  - $7 * 16^1 = 112$
+- $16 + 112 = 125$
+
+So **7D** is **125** in base 10!
+
+---
+
+Want a challenge? Try converting hexadecimal number `B1` to base 10!
+
+<details>
+<summary><i>What's <code>B1</code> in base 10?</i></summary>
+<br />
+<i>
+
+As a reminder, we're calculating from right to left.
+
+Our number is $B1$.
+
+- $1$ maps to $1$
+  - $1 * 16^0 = 1$
+- $B$ maps to $11$
+  - $11 * 16^1 = 176$
+- $1 + 176 = 177$
+
+So `B1` is 177 in base 10.
+</i>
+</details>
+
+---
+
+<br />
+
+You'll often see hex numbers associated with assembly, registers, and even in higher level concepts like [hex color codes](https://www.color-hex.com/). Now you have the tools you need to recognize these numbers and decode them!
+
+For more number system goodness, check out [this site](https://www.mathsisfun.com/binary-number-system.html) for more information and an animated explanation.
 
 <br />
 
 ---
 
-<a href="/guide/writing-code/instructions.md">
+<a href="/guide/writing-code/uppercaser.md">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://cloud-5aq8uo1rv-hack-club-bot.vercel.app/0backd.png">
     <img align="left" width="60" src="https://cloud-5v3nvbscw-hack-club-bot.vercel.app/0backl.png" />
@@ -89,8 +275,17 @@ Confused? Check out [this site](https://www.mathsisfun.com/binary-number-system.
   <em>
     <b>
       <a href="/guide/math/boolean-logic.md">
-        Boolean logic →
+        Let's put our new binary knowledge to the test →
       </a>
     </b>
   </em>
+</p>
+
+---
+
+<p align="center">
+  <a href="https://hackclub.com/">
+    <img width="35" src="https://cloud-l0g1cgz4b-hack-club-bot.vercel.app/0h.png"><br/>
+    Made with love by Hack Club
+  </a>
 </p>

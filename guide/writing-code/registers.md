@@ -8,17 +8,15 @@ We'll be talking about the **x86-64** registers here, but the concepts apply to 
 
 <p align="center">
   <br />
-  <img height="600" src="https://cloud-1dple0n1y-hack-club-bot.vercel.app/0screen_shot_2022-06-01_at_10.49.40_am.png">
+  <img src="https://cloud-957sbc0qw-hack-club-bot.vercel.app/0registers.png">
   <br />
   <span>
-    <em>
-      Commonly used registers from <a href="https://web.stanford.edu/class/archive/cs/cs107/cs107.1222/guide/x86-64.html">Stanford CS107</a>
-    </em>
+    <em>Commonly used registers</em>
   </span>
 </p>
 <br />
 
-There are a few registers to choose from, and each one of them has a convention set up for how to use it. Some of the registers are general purpose, meaning you can store whatever you need to there while your program is executing. But there are also some specialized registers that are used for specific data, like [the instruction pointer](#the-instruction-pointer) or [the stack pointer](#the-stack-pointer), which we will talk about below.
+There are a few registers to choose from, and each one of them has a convention set up for how to use it. Some of the registers are general purpose, meaning you can store whatever you need to there while your program is executing. But there are also some specialized registers that are used for specific data, like [the instruction pointer](#the-instruction-pointer) or [the stack pointer](#the-stack-pointer), which we will talk about soon.
 
 ## Register data
 
@@ -26,7 +24,7 @@ As we learned earlier, the only things we can store in our registers are numbers
 
 The data saved in registers are:
 1. Numbers (`10`)
-1. Letters (`c`)
+1. Letters (`"M"`)
 1. Memory addresses (`0x12345678`)
 
 The computer stores those numbers as [bits](/guide/writing-code/data.md), and the amount of bits a register can hold depends on the processor.
@@ -43,7 +41,15 @@ Whereas 32 bit would be:
 000010101111100001100011010100
 ```
 
-There are x86 processors that are 16-bit, 32-bit, and 64-bit, so we specify the "-64" in "x86-64" to know we're talking about the 64-bit version. You'll see some examples online that use the 32-bit version, and the registers they refer to are different. Usually 32-bit registers start with the letter `E`, whereas 64-bit registers usually start with the letter.
+64-bit registers can hold a number up to a whopping $18,446,744,073,709,551,615$.
+
+32-bit, on the other hand, can hold up to the number $4,294,967,295$.
+
+That's **18 quintillion** vs. **4 billion**. Quite a difference, eh?
+
+Well why isn't it just double? The way binary works is that it grows exponential with how many bits you're allowed to use. So doubling the size of our registers was a huge improvement for computers.
+
+There are x86 processors that are 16-bit, 32-bit, and 64-bit, so we specify the "-64" in "x86-64" to know we're talking about the 64-bit version. You'll see some examples online that use the 32-bit version, and the registers they refer to are different. Usually 32-bit registers start with the letter `E`, whereas 64-bit registers usually start with the letter `R`.
 
 Since a register holds **64 bits**, that can also be translated to **8 bytes** (64 _(bits)_ divided by 8 _(bits in a byte)_).
 
@@ -76,4 +82,13 @@ So, another way to refer to the register size is as a quadruple word, or **qword
       </a>
     </b>
   </em>
+</p>
+
+---
+
+<p align="center">
+  <a href="https://hackclub.com/">
+    <img width="35" src="https://cloud-l0g1cgz4b-hack-club-bot.vercel.app/0h.png"><br/>
+    Made with love by Hack Club
+  </a>
 </p>

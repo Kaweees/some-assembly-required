@@ -2,8 +2,8 @@
 
 ### Code Examples
 
-- [Hello World](/code/x86-intel/hello-world/hello-world.asm)
-- [Uppercaser](/code/x86-intel/uppercaser/uppercaser.asm)
+- [Hello World](/code/x86-intel/hello-world/hello-world-mac.asm)
+- [Uppercaser](/code/x86-intel/uppercaser/uppercaser-mac.asm)
 
 ---
 
@@ -19,25 +19,25 @@ The **64** part is referring to the number of [bits](/guide/writing-code/data.md
 
 By default, macOS doesn't ship with developer tools, since most computer users aren't writing code. In order to compile these examples, you'll need to [download Xcode](https://developer.apple.com/xcode/) and their [command line tools](https://developer.apple.com/library/archive/technotes/tn2339/_index.html).
 
+If you have [Homebrew](https://brew.sh/) installed, you can download the [yasm package](https://formulae.brew.sh/formula/yasm).
+
 ## Running programs
 
-The object files and executables have been pushed up to GitHub just for viewing purposes (like if you wanted to view them in a [hex editor](https://hexfiend.com/)). That being said, unless you're on the specific processor I compiled them on, the programs and object files won't work for you.
+We will use the [Hello World](/code/x86-intel/hello-world/hello-world-mac.asm) program as our example for this, but you will see the same steps for the [Uppercaser](/code/x86-intel/uppercaser/uppercaser-mac.asm) program.
 
-We will use the [Hello World](/code/x86-intel/hello-world/hello-world.asm) program as our example for this, but you will see the same steps for the [Uppercaser](/code/x86-intel/uppercaser/uppercaser.asm) program.
-
-For my computer, an Intel mac, these are the instructions to compile and run the code. We have 3 steps to run our program:
+For a Mac (both Intel and Apple Silicon), these are the instructions to compile and run the code. We have 3 steps to run our program:
 1. Assemble it into an object file
 1. Generate our executable
 1. Run our executable
 
 ### 1. Assemble our program into an object file
 ```
-$ nasm -f macho64 hello-world.asm
+$ yasm -f macho64 hello-world.asm
 ```
 
 This whole command creates an object file, which is machine code. You can view it in a [hex editor](https://hexfiend.com/). If you view it in a normal text editor, it tries to convert the machine code to ASCII, which makes it nonsensical.
 
-`nasm` is our assembler, `-f` flag is to specify our file format. `macho64` is our file format, used for Mac executables.
+`yasm` is our assembler, `-f` flag is to specify our file format. `macho64` is our file format, used for Mac executables.
 
 
 ### 2. Generate our executable
@@ -52,18 +52,20 @@ This generates our executable by linking our object file to any libraries it nee
 $ ./hello-world
 ```
 
+> Note: For the [Uppercaser](/code/x86-intel/uppercaser/uppercaser-mac.asm) program, you'll have to pass command line arguments (eg. `words to uppercase`) so your command might look like `./uppercaser words to uppercase`
+
 ### All together now!
 ```
-$ nasm -f macho64 hello-world.asm && ld hello-world.o -o hello-world -macosx_version_min 12.4 -L /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib -lSystem -no_pie && ./hello-world
+$ yasm -f macho64 hello-world.asm && ld hello-world.o -o hello-world -macosx_version_min 12.4 -L /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib -lSystem -no_pie && ./hello-world
 ```
 
 ## Anatomy of a program
 
-We will use the [Hello World](/code/x86-intel/hello-world/hello-world.asm) program as our example for this, but you will see a similar setup in the [Uppercaser](/code/x86-intel/uppercaser/uppercaser.asm) program as well.
+We will use the [Hello World](/code/x86-intel/hello-world/hello-world-mac.asm) program as our example for this, but you will see a similar setup in the [Uppercaser](/code/x86-intel/uppercaser/uppercaser-mac.asm) program as well.
 
 First thing you'll see is a [section for read-only constants](https://github.com/hackclub/some-assembly-required/blob/3e47d24b7b2492faea8dc2c0efcfcddc7d87a342/code/x86-intel/hello-world/hello-world.asm#L33-L43).
 
-This is used in our Hello World program for setting up our string data, but if you look in the [Uppercaser](https://github.com/hackclub/some-assembly-required/blob/0b1c6f2d1e96c08960bbea816b7ff039c38238a6/code/x86-intel/uppercaser/uppercaser.asm#L12) program, that section is empty because we don't need to set up any constants for it.
+This is used in our Hello World program for setting up our string data, but if you look in the [Uppercaser](https://github.com/hackclub/some-assembly-required/blob/0b1c6f2d1e96c08960bbea816b7ff039c38238a6/code/x86-intel/uppercaser/uppercaser-mac.asm#L12) program, that section is empty because we don't need to set up any constants for it.
 
 ```asm
 ; Section for read-only constants
@@ -106,7 +108,7 @@ We then [exit our program](https://github.com/hackclub/some-assembly-required/bl
   syscall ; invoke operating system to exit
 ```
 
-## Some common instructions explained
+## Common Instructions
 
 For more common instructions, check out the [Stanford CS107 list](https://web.stanford.edu/class/archive/cs/cs107/cs107.1222/guide/x86-64.html#common-instructions).
 
@@ -125,82 +127,9 @@ For more common instructions, check out the [Stanford CS107 list](https://web.st
 | **call**    | fn        | push %rip, jmp to fn  |
 | **ret**     |           | pop %rip              |
 
-### mov
-_Arguments: src, dst_
-
-Explain mov here
-
-### add
-_Arguments: src, dst_
-
-Explain add here
-
-### sub
-_Arguments: src, dst_
-
-Explain sub here
-
-### cmp
-_Arguments: a, b_
-
-Explain cmp here
-
-### jmp
-_Arguments: label_
-
-Explain jmp here
-
-### je
-_Arguments: label_
-
-Explain je here
-
-### jne
-_Arguments: label_
-
-Explain jne here
-
-### jg
-_Arguments: label_
-
-Explain jg here
-
-### push
-_Arguments: src_
-
-Explain push here
-
-### pop
-_Arguments: dst_
-
-Explain pop here
-
-### call
-_Arguments: fn_
-
-Explain call here
-
-### ret
-
-Explain ret here
-
-## Flags
-
-TODO: Fill this out
-
 ## Registers
 
-From [Stanford CS107](https://web.stanford.edu/class/archive/cs/cs107/cs107.1222/guide/x86-64.html), the table below lists the commonly used registers. Each register is 64 bits.
-
-Some registers are designated for a certain purpose, such as `%rsp` being used as the stack pointer or `%rax` for the return value from a function.
-
-Other registers are all-purpose, but have a conventional use depending on whether **caller-owned** or **callee-owned**.
-
-For example, if the function `function1` calls `function2`, we refer to `function1` as the **caller** and `function2` as the **callee**. The registers used for the first 6 arguments and return value are all **callee-owned**.
-
-That means that the **callee** can freely use those registers, overwriting existing values without taking any precautions. If `%rax` holds a value the **caller** wants to retain, the caller must copy the value to a "safe" location before making a call. The **callee-owned** registers are ideal for _scratch/temporary_ use by the **callee**.
-
-In contrast, if the **callee** intends to use a **caller-owned** register, it must first _preserve its value_ and _restore it_ before exiting the call. The **caller-owned** registers are used for _local state_ of the **caller** that needs to preserved across further function calls.
+Registers in x86-64 are 64 bits.
 
 <p align="center">
   <br />
@@ -208,7 +137,7 @@ In contrast, if the **callee** intends to use a **caller-owned** register, it mu
   <br />
   <span>
     <em>
-      Commonly used x86-64 registers
+      Commonly used registers from <a href="https://web.stanford.edu/class/archive/cs/cs107/cs107.1222/guide/x86-64.html">Stanford CS107</a>
     </em>
   </span>
 </p>

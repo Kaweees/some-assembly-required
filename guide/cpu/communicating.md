@@ -1,6 +1,10 @@
 # Communicating with the CPU
 
-We're used to communicating with the CPU in a high-level language like JavaScript or C, but the code you'd write in these languages doesn't directly represent the things you're telling the CPU to do. They're more like a high-level summary. If you want to communicate directly with the CPU, you'll need to write the instructions for it in a format called assembly language.
+We're used to communicating with the CPU in a high-level language like JavaScript or C, but the code you'd write in these languages doesn't directly represent the things you're telling the CPU to do.
+
+It's like if you decided to travel to Greece. Writing in a high-level language would be like buying a travel package that handles everything for you, like booking your plane tickets, hotels, handling your food, car rental. If you wanted to handle those things manually, you'd have to buy each thing individually and organize it yourself.
+
+Similarly, with your computer, if you want to control each aspect of what you're asking the computer to do, you'll need to write the instructions for it in a format called assembly language.
 
 Assembly language is the lowest level of abstraction in computers where the code you write is still human readable. You may disagree about the human readable part when you first see it, but I promise you it's better than what the computer is looking at!
 
@@ -8,13 +12,7 @@ What do we mean by an abstraction? Well, an abstraction is a layer above somethi
 
 <p align="center">
   <br />
-  <img width="460" height="300" src="https://www.familyhandyman.com/wp-content/uploads/2019/05/08.jpg">
-  <br />
-  <span>
-    <em>
-      just a placeholder image to break up the content!
-    </em>
-  </span>
+  <img height="300" src="https://cloud-lrwvwyim3-hack-club-bot.vercel.app/0wheel.png">
 </p>
 <br />
 
@@ -32,23 +30,17 @@ It's like if you were an American and you were giving your Icelandic friend a ca
 
 <p align="center">
   <br />
-  <img width="460" height="300" src="https://www.wikihow.com/images/thumb/e/ec/Write-a-Recipe-Step-12.jpg/v4-460px-Write-a-Recipe-Step-12.jpg">
-  <br />
-  <span>
-    <em>
-      just a placeholder image to break up the content!
-    </em>
-  </span>
+  <img src="https://cloud-r72u23edw-hack-club-bot.vercel.app/0recipe-resized.png">
 </p>
 <br />
 
-Line by line you'd translate the recipe until you have a new recipe for your friend to use. You'd take the first measurement, 2 cups of flour (**assembly language**), convert it to grams (**the assembler**), and then write the converted recipe to use 68 grams of flour (**machine code**). Look at you go - you're the assembler here!
+Line by line you'd translate the recipe until you have a new recipe for your friend to use. You'd take the first measurement, 2 cups of flour (**assembly language**), convert it to grams (**the assembler**), and then write the converted recipe to use 136 grams of flour (**machine code**). Look at you go - you're the assembler here!
 
 You could skip all of this assembly shenanigans by writing the machine code directly, but machine code looks something like:
 
 ```
-73 137 252 73 137 245 65  85
-65  84 232 52   0   0  0 232
+73 137 252 73 137 245 65 85
+65 84 232 52 0 0 0 232
 ```
 
 Assembly, on the other hand, looks something like:
@@ -81,4 +73,13 @@ All programming languages are some level of abstraction above machine code. But,
       </a>
     </b>
   </em>
+</p>
+
+---
+
+<p align="center">
+  <a href="https://hackclub.com/">
+    <img width="35" src="https://cloud-l0g1cgz4b-hack-club-bot.vercel.app/0h.png"><br/>
+    Made with love by Hack Club
+  </a>
 </p>

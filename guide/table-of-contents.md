@@ -2,36 +2,21 @@
 
 1. [Introduction](/guide/introduction.md)
 1. [The CPU](/guide/cpu/cpu.md)
-   - [Communicating with the CPU](/guide/cpu/communicating.md)
-   - [The Instruction Cycle](/guide/cpu/instruction-cycle.md)
-   - [Electricity and the Physical World](/guide/cpu/physical-world.md)
-2. [Writing Code](/guide/writing-code/writing-code.md)
-   - [Data](/guide/writing-code/guide.md)
-   - [Registers](/guide/writing-code/registers.md)
-   - [Instructions](/guide/writing-code/instructions.md)
-3. [The Math Section](/math/number-system.md)
-   - [Number Systems](/guide/math/number-systems.md)
-   - [Boolean Logic](/guide/math/boolean-logic.md)
+2. [Writing Code](/guide/writing-code/multitude.md)
+3. [The Math Section](/guide/math/number-systems.md)
 4. [Resources](/guide/resources.md)
 
 ## Working code examples
 
-1. [RISC-V](/code/riscv/README.md)
-   - [Examples of basic RISC-V instructions being used](/code/riscv/riscv.s)
-1. [X86-64 Intel Syntax](/code/x86-intel/README.md)
-   - [Hello World](/code/x86-intel/hello-world/hello-world.asm)
-   - [Uppercaser](/code/x86-intel/uppercaser/uppercaser.asm)
-1. C (For comparison purposes)
-   - [Hello World](/code/c/hello-world/hello-world.c)
-   - [Uppercaser](/code/c/uppercaser/uppercaser.c)
+1. [X86-64 Intel Syntax](/code/x86-intel/)
+1. [X86-64 AT&T Syntax](/code/x86-AT&T/)
+1. [RISC-V](/code/riscv/)
+1. [6502](/code/6502/)
+1. [C (For comparison purposes)](/code/c/)
 
-## Contributors
+<br />
 
-- [@jessicard](https://github.com/jessicard)
-- [@bellesea](https://github.com/bellesea)
-- [@TheOneKevin](https://github.com/theonekevin)
-- [@exu3](https://github.com/exu3)
-- [@jakeboxer](https://github.com/jakeboxer)
+**Shoutout to all of the [contributors](contributors.md) of this guide!**
 
 <br />
 
@@ -52,4 +37,13 @@
       </a>
     </b>
   </em>
+</p>
+
+---
+
+<p align="center">
+  <a href="https://hackclub.com/">
+    <img width="35" src="https://cloud-l0g1cgz4b-hack-club-bot.vercel.app/0h.png"><br/>
+    Made with love by Hack Club
+  </a>
 </p>
