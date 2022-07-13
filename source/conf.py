@@ -19,8 +19,9 @@ sys.path.append(os.path.abspath('_ext'))
 # -- Project information -----------------------------------------------------
 
 project = 'Some Assembly Required'
+html_show_copyright = True
 copyright = f'{datetime.now().year}, Hack Club'
-author = 'Hack Club'
+author = 'Made with ❤️ by Hack Club'
 
 # The short X.Y version
 version = ''
@@ -73,8 +74,8 @@ html_theme = 'furo'
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-  'dark_logo': 'assembly_logo_dark.svg',
-  'light_logo': 'assembly_logo_light.svg',
+  'dark_logo': 'sam_logo_dark.png',
+  'light_logo': 'sam_logo_light.png',
   'navigation_with_keys': True,
   'footer_icons': [
     {
