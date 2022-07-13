@@ -2,11 +2,15 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
-        <link rel="canonical" href="asm.hackclub.com/genindex.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="An approachable introduction to assembly" name="description" />
+<meta content="assembly, assembly guide, assembly instructions, hack club" name="keywords" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="The Math Section" href="number-systems.html" /><link rel="prev" title="The CPU" href="cpu.html" />
+        <link rel="canonical" href="asm.hackclub.com/multitude.html" />
 
-    <meta name="generator" content="sphinx-4.5.0, furo 2022.06.21"/><title>Index - Some Assembly Required</title>
-<link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <meta name="generator" content="sphinx-4.5.0, furo 2022.06.21"/>
+        <title>Communicating with the CPU - Some Assembly Required</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
@@ -160,10 +164,10 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Home</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cpu.html">The CPU</a></li>
-<li class="toctree-l1"><a class="reference internal" href="multitude.html">Communicating with the CPU</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Communicating with the CPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="number-systems.html">The Math Section</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
 </ul>
@@ -199,10 +203,42 @@
           </label>
         </div>
         <article role="main">
-          
-<section class="genindex-section">
-  <h1 id="index">Index</h1>
-  <div class="genindex-jumpbox"></div>
+          <section id="communicating-with-the-cpu">
+<h1>Communicating with the CPU<a class="headerlink" href="#communicating-with-the-cpu" title="Permalink to this headline">#</a></h1>
+<p>We’re used to communicating with the CPU in a high-level language like JavaScript or C, but the code you’d write in these languages doesn’t directly represent the things you’re telling the CPU to do.</p>
+<p>It’s like if you decided to travel to Greece. Writing in a high-level language would be like buying a travel package that handles everything for you, like booking your plane tickets, hotels, handling your food, car rental. If you wanted to handle those things manually, you’d have to buy each thing individually and organize it yourself.</p>
+<p>Similarly, with your computer, if you want to control each aspect of what you’re asking the computer to do, you’ll need to write the instructions for it in a format called assembly language.</p>
+<p>Assembly language is the lowest level of abstraction in computers where the code you write is still human readable. You may disagree about the human readable part when you first see it, but I promise you it’s better than what the computer is looking at!</p>
+<p>What do we mean by an abstraction? Well, an abstraction is a layer above something else that makes that thing easier to do.</p>
+<p align="center">
+  <br />
+  <img height="300" src="https://cloud-lrwvwyim3-hack-club-bot.vercel.app/0wheel.png">
+</p>
+<br />
+<p>For example, let’s take a steering wheel. A steering wheel makes driving simple - you just turn left and right, and the amount you turn maps to how much your tires turn. But, what’s happening underneath? The steering wheel is an abstraction layer on top of rods, levers, and whatever else is happening inside that car, simplifying the act of turning for you. Or something like that. I clearly don’t know anything about cars.</p>
+<p>In our case, assembly is the steering wheel, and the rods, levers, and other hidden stuff is our machine code.</p>
+<p>Machine code is just a bunch of numbers that the computer can read. In fact, it turns out that <strong>everything is just numbers</strong> underneath. Here’s the thing about computers - they can actually only understand numbers, so everything we do has to be translated down to numbers eventually.</p>
+<p>So, machine code is just a bunch of numbers that the CPU reads to figure out what instructions to execute and on what data. It’s the computer-readable code.</p>
+<p>Since we humans like to read text, assembly is a text based language, consisting of acronyms that represent instructions to the computer. Alas, since they are text, they are not directly readable by the CPU. So that text file gets translated, through something called the <strong>assembler</strong>, into the numbers that the computer can then read.</p>
+<p>It’s like if you were an American and you were giving your Icelandic friend a cake recipe. Americans write recipes in imperial measurements (eg cups, tablespoons, etc.), and Icelandic people write recipes in metric measurements (grams, liters, etc.).</p>
+<p align="center">
+  <br />
+  <img src="https://cloud-r72u23edw-hack-club-bot.vercel.app/0recipe-resized.png">
+</p>
+<br />
+<p>Line by line you’d translate the recipe until you have a new recipe for your friend to use. You’d take the first measurement, 2 cups of flour (<strong>assembly language</strong>), convert it to grams (<strong>the assembler</strong>), and then write the converted recipe to use 136 grams of flour (<strong>machine code</strong>). Look at you go - you’re the assembler here!</p>
+<p>You could skip all of this assembly shenanigans by writing the machine code directly, but machine code looks something like:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="mi">73</span><span class="w"> </span><span class="mi">137</span><span class="w"> </span><span class="mi">252</span><span class="w"> </span><span class="mi">73</span><span class="w"> </span><span class="mi">137</span><span class="w"> </span><span class="mi">245</span><span class="w"> </span><span class="mi">65</span><span class="w"> </span><span class="mi">85</span><span class="w"></span>
+<span class="mi">65</span><span class="w"> </span><span class="mi">84</span><span class="w"> </span><span class="mi">232</span><span class="w"> </span><span class="mi">52</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">232</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Assembly, on the other hand, looks something like:</p>
+<div class="highlight-asm notranslate"><div class="highlight"><pre><span></span><span class="nf">mov</span><span class="w"> </span><span class="no">r12</span><span class="p">,</span><span class="w"> </span><span class="no">r13</span><span class="w"></span>
+<span class="nf">add</span><span class="w"> </span><span class="no">r12</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
+</pre></div>
+</div>
+<p>I know this doesn’t look extremely friendly, especially compared to the high level programming languages we have today. However, I promise you it is far friendlier than just writing a bunch of numbers!</p>
+<p>All programming languages are some level of abstraction above machine code. But, in the end, all human written code has to be converted into numbers for your CPU to be able to read.</p>
 </section>
 
         </article>
@@ -210,8 +246,26 @@
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="number-systems.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">The Math Section</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="cpu.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">The CPU</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
