@@ -102,6 +102,8 @@ html_theme_options = {
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = "sphinx"
 pygments_dark_style = "monokai"
+myst_highlight_code_blocks = True
+myst_number_code_blocks = ["js", "html", "css", "python", "r", "bash", "sql", "tex"]
 
 # html_logo = 'nerd_herd_2.svg'
 
