@@ -139,7 +139,7 @@ html_css_files = [
 
 html_favicon = 'img/logo.svg'
 html_title = "Some Assembly Required"
-html_baseurl = ""
+html_baseurl = "asm.hackclub.com"
 
 html_show_sphinx = True
 highlight_language = "cpp"
